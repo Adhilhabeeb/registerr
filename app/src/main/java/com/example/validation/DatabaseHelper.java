@@ -47,7 +47,9 @@ public class DatabaseHelper   extends SQLiteOpenHelper {
                 new String[]{username, password}
         );
 
-        return cursor.getCount() > 0;
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+        return exists;
     }
 
 }
