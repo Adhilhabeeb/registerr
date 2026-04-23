@@ -36,10 +36,15 @@ public class  Registeractivity extends AppCompatActivity {
 
 
         registerBtn.setOnClickListener(v -> {
-            boolean inserted = db.insertUser(
-                    username.getText().toString(),
-                    password.getText().toString()
-            );
+            String user = username.getText().toString();
+            String pass = password.getText().toString();
+
+            if (user.isEmpty() || pass.isEmpty()) {
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            boolean inserted = db.insertUser(user, pass);
 
             if (inserted) {
 //                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
