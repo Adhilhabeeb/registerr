@@ -22,11 +22,12 @@ public class DatabaseHelper   extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)");
     }
 
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS users");
+        onCreate(db);
     }
-
     // Insert user
     public boolean insertUser(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
